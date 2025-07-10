@@ -1,17 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import DashboardScreen from './components/Dashboard/DashboardScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <DashboardScreen />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 32,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
