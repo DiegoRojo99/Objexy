@@ -1,5 +1,5 @@
 import { FlatList } from "react-native";
-import { Objective } from "./lib/types/Objective";
+import { Objective } from "../../lib/types/Objective";
 import { ObjectiveProgress } from "./ObjectiveProgress";
 
 export function ObjectiveList({ objectives }: { objectives: Objective[] }) {

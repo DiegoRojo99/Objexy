@@ -1,4 +1,4 @@
-import { Objective } from "../components/Dashboard/lib/types/Objective";
+import { Objective } from "../lib/types/Objective";
 
 export const sampleObjectives: Objective[] = [
   {
