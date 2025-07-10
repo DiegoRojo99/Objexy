@@ -1,19 +1,21 @@
-import { View, Text, StyleSheet } from "react-native";
-import { Objective, Tag } from "./lib/types/Objective";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Objective, Tag } from "../../lib/types/Objective";
 
 export function ObjectiveProgress({ objective }: { objective: Objective }) {
   return (
-    <View style={styles.objectiveContainer}>
-      <Text style={styles.objectiveTitle}>{objective.title}</Text>
-      <Text style={styles.objectiveText}>{objective.description}</Text>
-      <Text style={styles.objectiveText}>Frequency: {objective.frequencyNumber}x {objective.frequency}</Text>
-      <Text style={styles.objectiveText}>Tags:</Text>
-      <View style={tagStyles.tagContainer}>
-        {objective.tags.map(tag => (
-          <TagItem key={tag.id} tag={tag} />
-        ))}
+    <Pressable android_ripple={{ color: '#ccc' }} style={({ pressed }) => [styles.objectiveContainer, pressed && { backgroundColor: '#f0f0f0' }]}>
+      <View style={styles.objectiveContainer}>
+        <Text style={styles.objectiveTitle}>{objective.title}</Text>
+        <Text style={styles.objectiveText}>{objective.description}</Text>
+        <Text style={styles.objectiveText}>Frequency: {objective.frequencyNumber}x {objective.frequency}</Text>
+        <Text style={styles.objectiveText}>Tags:</Text>
+        <View style={tagStyles.tagContainer}>
+          {objective.tags.map(tag => (
+            <TagItem key={tag.id} tag={tag} />
+          ))}
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
