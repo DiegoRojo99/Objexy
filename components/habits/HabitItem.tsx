@@ -1,15 +1,26 @@
 import { View, Text, StyleSheet, Pressable, Image, Button } from "react-native";
-import { HabitWithLogs } from "../../lib/types/Habit";
+import { HabitLog, HabitWithLogs } from "../../lib/types/Habit";
 import TagList from "../tags/TagList";
-import HabitLogStreak from "./HabitLogStreak";
+import HabitLogStreak from "./logs/HabitLogStreak";
+import HabitLogModal from "./logs/HabitLogModal";
+import { useState } from "react";
 
 export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [habitLogs, setHabitLogs] = useState(habit.logs);
+
   function formatFrequency(period: string, count: number): string {
     const uppercasePeriod = period.charAt(0).toUpperCase() + period.slice(1);
     return `Frequency: ${uppercasePeriod} x${count}`;
   }
 
+  function handleAddHabitLog(habitLog: HabitLog) {
+    setHabitLogs(prevLogs => [ ...prevLogs, habitLog ]);
+  }
+
   return (
+    <>
+    <HabitLogModal visible={modalVisible} onClose={() => setModalVisible(false)} onAddHabitLog={handleAddHabitLog} />
     <Pressable style={styles.itemContainer} android_ripple={{ color: '#ddd' }}>
       <View style={styles.topRow}>
         <Image
@@ -21,15 +32,16 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
           <Text style={styles.itemDescription}>{habit.description}</Text>
         </View>
         <View style={{ flex: 0, width: 40, height: 40, alignItems: 'center' }}>
-          <Button title="+" onPress={() => {}} />
+          <Button title="+" onPress={() => { setModalVisible(true); }} />
         </View>
       </View>
       <View>
         <Text style={styles.itemFrequency}>{formatFrequency(habit.targetPeriod, habit.targetCount)}</Text>
         <TagList tags={habit.tagIds} />
       </View>
-      <HabitLogStreak logs={habit.logs} />
+      <HabitLogStreak logs={habitLogs} />
     </Pressable>
+    </>
   );
 }
 
