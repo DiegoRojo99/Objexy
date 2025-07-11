@@ -8,7 +8,7 @@ export const sampleHabits: Habit[] = [
     targetPeriod: "daily",
     targetCount: 1,
     tagIds: [
-      "1", "2"
+      "Coding", "Learning",
     ],
     createdAt: "2023-01-01",
     startDate: "",
@@ -18,11 +18,11 @@ export const sampleHabits: Habit[] = [
   {
     id: "2",
     name: "Read a book",
-    description: "Finish reading 'The Pragmatic Programmer'",
+    description: "Read 'Mistborn'",
     targetPeriod: "weekly",
-    targetCount: 1,
+    targetCount: 2,
     tagIds: [
-      "3"
+      "Reading"
     ],
     createdAt: "2023-01-02",
     startDate: "",
@@ -36,7 +36,7 @@ export const sampleHabits: Habit[] = [
     targetPeriod: "monthly",
     targetCount: 1,
     tagIds: [
-      "4"
+      "Fitness"
     ],
     createdAt: "2023-01-03",
     startDate: "",
@@ -50,9 +50,37 @@ export const sampleHabits: Habit[] = [
     targetPeriod: "yearly",
     targetCount: 1,
     tagIds: [
-      "5"
+      "Travel"
     ],
     createdAt: "2023-01-04",
+    startDate: "",
+    streak: 0,
+    updatedAt: ""
+  },
+  {
+    id: "5",
+    name: "Play 'Hogwarts Legacy'",
+    description: "Immerse yourself in the world of 'Hogwarts Legacy'",
+    targetPeriod: "weekly",
+    targetCount: 3,
+    tagIds: [
+      "Gaming", "Entertainment"
+    ],
+    createdAt: "2023-01-05",
+    startDate: "",
+    streak: 0,
+    updatedAt: ""
+  },
+  {
+    id: "6",
+    name: "Watch a movie",
+    description: "Enjoy a movie",
+    targetPeriod: "weekly",
+    targetCount: 1,
+    tagIds: [
+      "Entertainment", "Movies"
+    ],
+    createdAt: "2023-01-06",
     startDate: "",
     streak: 0,
     updatedAt: ""
