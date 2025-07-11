@@ -1,11 +1,11 @@
 import { FlatList } from "react-native";
-import { Habit } from "../../lib/types/Habit";
+import { HabitWithLogs } from "../../lib/types/Habit";
 import HabitItem from "./HabitItem";
 
-export function HabitList({ habits }: { habits: Habit[] }) {
+export function HabitList({ habits }: { habits: HabitWithLogs[] }) {
   return (
     <FlatList
-      style={{ paddingTop: 8, marginBottom: 24 }}
+      style={{ paddingTop: 8, marginBottom: 24, flex: 1 }}
       data={habits}
       renderItem={({ item }) => <HabitItem key={item.id} habit={item} />}
       keyExtractor={item => item.id}
