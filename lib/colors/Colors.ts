@@ -3,6 +3,8 @@ const Colors = {
   secondary: '#ffffffff',
   background: '#ffffff',
   text: '#333333',
+  navigation: '#61c0ffff',
+  navigationText: '#ffffff',
 };
 
 export default Colors;

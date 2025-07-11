@@ -5,11 +5,15 @@ import HabitLogStreak from "./logs/HabitLogStreak";
 import HabitLogModal from "./logs/HabitLogModal";
 import { useState } from "react";
 import { Foundation, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Colors from "../../lib/colors/Colors";
+import { RootStackParamList } from "../../lib/types/Params";
 
 export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [habitLogs, setHabitLogs] = useState(habit.logs);
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   function formatFrequency(period: string, count: number): string {
     const uppercasePeriod = period.charAt(0).toUpperCase() + period.slice(1);
@@ -20,10 +24,14 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
     setHabitLogs(prevLogs => [ ...prevLogs, habitLog ]);
   }
 
+  function handlePress() {
+    navigation.navigate('Habit Details', { habitId: habit.id });
+  }
+
   return (
     <>
     <HabitLogModal visible={modalVisible} onClose={() => setModalVisible(false)} onAddHabitLog={handleAddHabitLog} />
-    <Pressable style={styles.itemContainer} android_ripple={{ color: '#ddd' }}>
+    <Pressable style={styles.itemContainer} android_ripple={{ color: '#ddd' }} onPress={handlePress}>
       <View style={styles.topRow}>
         <Foundation name="target" size={40} color="black" style={{ marginRight: 8 }} />
         <View style={{ flex: 4 }}>
