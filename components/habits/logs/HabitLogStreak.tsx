@@ -1,12 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
-import { HabitLog } from "../../lib/types/Habit";
+import { HabitLog } from "../../../lib/types/Habit";
 
 export default function HabitLogStreak({ logs }: { logs: HabitLog[] }) {
-  function formatDate(date: string): string {
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(date).toLocaleDateString('en-US', options);
-  }
-
   function checkPreviousDay(date1: string, date2: string): boolean {
     const currDate = new Date(date1);
     const prevDate = new Date(date2);
@@ -35,9 +30,7 @@ export default function HabitLogStreak({ logs }: { logs: HabitLog[] }) {
         streak++;
       }
       // If not consecutive, break the loop
-      else {
-        break;
-      }
+      else break;
     }
     return streak;
   };
