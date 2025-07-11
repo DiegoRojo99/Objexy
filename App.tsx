@@ -1,8 +1,7 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
 import HabitScreen from './screens/HabitScreen';
-import { LinearGradient } from 'expo-linear-gradient';
-import Colors from './lib/colors/Colors';
 import { useFonts } from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   
@@ -12,11 +11,11 @@ export default function App() {
   });
 
   return (
-    <LinearGradient colors={[Colors.primary, Colors.secondary]} style={styles.container}>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <NavigationContainer>
         <HabitScreen />
-      </SafeAreaView>
-    </LinearGradient>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
