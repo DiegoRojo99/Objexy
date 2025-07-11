@@ -49,12 +49,15 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
 const styles = StyleSheet.create({
   itemContainer: {
     width: '100%',
-    padding: 8,
+    padding: 12,
     backgroundColor: Colors.background,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 4,
+    borderRadius: 8,
     marginVertical: 8,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
   },
   topRow: {
     flexDirection: 'row',
