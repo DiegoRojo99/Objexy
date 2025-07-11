@@ -3,6 +3,7 @@ export type Habit = {
   id: string;
   name: string;
   description?: string;
+  icon?: string; // optional icon for the habit
   targetCount: number;
   targetPeriod: HabitFrequency;
   tagIds?: string[];      // ← references to user-defined tags
