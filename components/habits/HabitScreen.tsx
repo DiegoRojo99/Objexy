@@ -3,14 +3,14 @@ import { sampleHabits } from "../../data/sample";
 import { useState } from "react";
 import HabitInputModal from "./HabitInputModal";
 import { HabitList } from "./HabitList";
-import { Habit } from "../../lib/types/Habit";
+import { Habit, HabitWithLogs } from "../../lib/types/Habit";
 
 export default function HabitScreen() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
-  const [habits, setHabits] = useState(sampleHabits);
+  const [habits, setHabits] = useState<HabitWithLogs[]>(sampleHabits);
 
   function handleAddHabit(newHabit: Habit) {
-    setHabits((prevHabits) => [...prevHabits, newHabit]);
+    setHabits((prevHabits) => [...prevHabits, { ...newHabit, logs: [] } as HabitWithLogs]);
     setModalIsVisible(false);
   }
 
@@ -26,8 +26,9 @@ export default function HabitScreen() {
 
 const styles = StyleSheet.create({
   habitsContainer: {
-    flex: 1,
-    margin: 16,
+    width: '100%',
+    height: '100%',
+    margin: 8,
   },
   habitsTitle: {
     fontSize: 24,
