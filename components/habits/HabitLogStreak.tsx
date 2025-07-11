@@ -16,12 +16,6 @@ export default function HabitLogStreak({ logs }: { logs: HabitLog[] }) {
     prevDate.setHours(0, 0, 0, 0);
     currDate.setHours(0, 0, 0, 0);
 
-    console.log(`Checking if ${formatDate(date1)} is the previous day of ${formatDate(date2)}`);
-    console.log(`Previous Date: ${prevDate.getTime()}, Current Date: ${currDate.getTime()}`);
-    console.log(`Diff: ${currDate.getTime() - prevDate.getTime()}`);
-    console.log(`Result: ${prevDate.getTime() === currDate.getTime() - 86400000}`);
-
-
     // Check if the previous date is exactly one day before the current date
     return prevDate.getTime() === currDate.getTime() - 86400000;
   }
