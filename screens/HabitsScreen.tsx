@@ -5,7 +5,7 @@ import HabitInputModal from "../components/habits/HabitInputModal";
 import { HabitList } from "../components/habits/HabitList";
 import { Habit, HabitWithLogs } from "../lib/types/Habit";
 
-export default function HabitScreen() {
+export default function HabitsScreen({  }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [habits, setHabits] = useState<HabitWithLogs[]>(sampleHabits);
 
@@ -16,7 +16,6 @@ export default function HabitScreen() {
 
   return (
     <View style={styles.habitsContainer}>
-      <Text style={styles.habitsTitle}>Habits</Text>
       <HabitInputModal visible={modalIsVisible} onClose={() => setModalIsVisible(false)} onAddHabit={handleAddHabit} />
       <Button title="Create new habit" onPress={() => setModalIsVisible(true)} />
       <HabitList habits={habits} />
@@ -26,9 +25,9 @@ export default function HabitScreen() {
 
 const styles = StyleSheet.create({
   habitsContainer: {
-    width: '100%',
-    height: '100%',
-    margin: 8,
+    flex: 1,
+    padding: 8,
+    backgroundColor: '#fff',
   },
   habitsTitle: {
     fontSize: 24,
