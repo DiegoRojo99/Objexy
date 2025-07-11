@@ -27,6 +27,7 @@ export default function HabitScreen() {
 const styles = StyleSheet.create({
   habitsContainer: {
     flex: 1,
+    margin: 16,
   },
   habitsTitle: {
     fontSize: 24,
