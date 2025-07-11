@@ -1,10 +1,10 @@
 import { StyleSheet, View } from 'react-native';
-import DashboardScreen from './components/Dashboard/DashboardScreen';
+import HabitScreen from './components/habits/HabitScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <DashboardScreen />
+      <HabitScreen />
     </View>
   );
 }

@@ -1,23 +1,35 @@
 import { useState } from "react";
 import { Button, TextInput, View, Modal, StyleSheet, Text, Image } from "react-native";
+import { Habit, HabitFrequency, HabitInput } from "../../lib/types/Habit";
+import { habitInputIntoHabitDTO } from "../../lib/dto/Habit";
 
-export default function ObjectiveInput({ visible, onClose }: { visible: boolean; onClose: () => void }) {
-  const [objective, setObjective] = useState("");
+type HabitInputModalProps = {
+  visible: boolean;
+  onClose: () => void;
+  onAddHabit: (habit: Habit) => void;
+};
+
+export default function HabitInputModal({ visible, onClose, onAddHabit }: HabitInputModalProps) {
+  const [habitName, setHabitName] = useState("");
   const [description, setDescription] = useState("");
-  const [frequency, setFrequency] = useState("");
+  const [targetPeriod, setTargetPeriod] = useState<HabitFrequency>("weekly");
+  const [targetCount, setTargetCount] = useState<number>(0);
   const [tags, setTags] = useState("");
 
-  function handleAddObjective() {
-    const newObjective = {
-      title: objective,
+  function handleAddHabit() {
+    const newHabitInput: HabitInput = {
+      name: habitName,
       description: description,
-      frequency: frequency,
-      tags: tags.split(",").map(tag => tag.trim()),
+      targetCount: targetCount,
+      targetPeriod: targetPeriod,
+      tagIds: tags.split(",").map(tag => tag.trim()),
     };
-    
-    console.log("Objective added:", newObjective);
+
+    const newHabit = habitInputIntoHabitDTO(newHabitInput);
+    onAddHabit(newHabit);
     onClose();
   }
+
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose} >
       <View style={styles.modal}>
@@ -26,10 +38,10 @@ export default function ObjectiveInput({ visible, onClose }: { visible: boolean;
           style={styles.image}
         />
         <TextInput
-          placeholder="Enter your objective"
+          placeholder="Enter your habit name"
           style={styles.input}
-          value={objective}
-          onChangeText={setObjective}
+          value={habitName}
+          onChangeText={setHabitName}
         />
         <TextInput
           placeholder="Description"
@@ -38,10 +50,25 @@ export default function ObjectiveInput({ visible, onClose }: { visible: boolean;
           onChangeText={setDescription}
         />
         <TextInput
-          placeholder="Frequency"
+          placeholder="Frequency (daily, weekly, monthly)"
           style={styles.input}
-          value={frequency}
-          onChangeText={setFrequency}
+          value={targetPeriod}
+          onChangeText={text => {
+            if (text === "daily" || text === "weekly" || text === "monthly") {
+              setTargetPeriod(text as HabitFrequency);
+            }
+          }}
+        />
+        <TextInput
+          placeholder="Target Count"
+          style={styles.input}
+          value={String(targetCount)}
+          onChangeText={text => {
+            const value = parseInt(text);
+            if (!isNaN(value)) {
+              setTargetCount(value);
+            }
+          }}
         />
         <TextInput
           placeholder="Tags (comma separated)"
@@ -51,7 +78,7 @@ export default function ObjectiveInput({ visible, onClose }: { visible: boolean;
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Add Objective" onPress={handleAddObjective} />
+            <Button title="Add Habit" onPress={handleAddHabit} />
           </View>
           <View style={styles.button}>
             <Button title="Cancel" onPress={onClose} color="red" />

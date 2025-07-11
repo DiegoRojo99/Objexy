@@ -1,49 +1,60 @@
-import { Objective } from "../lib/types/Objective";
+import { Habit } from "../lib/types/Habit";
 
-export const sampleObjectives: Objective[] = [
+export const sampleHabits: Habit[] = [
   {
     id: "1",
-    title: "Learn TypeScript",
+    name: "Learn TypeScript",
     description: "Understand the basics of TypeScript",
-    frequency: "daily",
-    frequencyNumber: 1,
-    tags: [
-      { id: "1", name: "Programming", color: "blue" },
-      { id: "2", name: "TypeScript", color: "green" }
+    targetPeriod: "daily",
+    targetCount: 1,
+    tagIds: [
+      "1", "2"
     ],
-    createdAt: "2023-01-01"
+    createdAt: "2023-01-01",
+    startDate: "",
+    streak: 0,
+    updatedAt: ""
   },
   {
     id: "2",
-    title: "Read a book",
+    name: "Read a book",
     description: "Finish reading 'The Pragmatic Programmer'",
-    frequency: "weekly",
-    frequencyNumber: 1,
-    tags: [
-      { id: "3", name: "Reading", color: "red" }
+    targetPeriod: "weekly",
+    targetCount: 1,
+    tagIds: [
+      "3"
     ],
-    createdAt: "2023-01-02"
+    createdAt: "2023-01-02",
+    startDate: "",
+    streak: 0,
+    updatedAt: ""
   },
   {
     id: "3",
-    title: "Exercise",
+    name: "Exercise",
     description: "Go for a run",
-    frequency: "monthly",
-    frequencyNumber: 1,
-    tags: [
-      { id: "4", name: "Fitness", color: "yellow" }
+    targetPeriod: "monthly",
+    targetCount: 1,
+    tagIds: [
+      "4"
     ],
-    createdAt: "2023-01-03"
+    createdAt: "2023-01-03",
+    startDate: "",
+    streak: 0,
+    updatedAt: ""
   },
   {
     id: "4",
-    title: "Plan vacation",
+    name: "Plan vacation",
     description: "Start planning the summer vacation",
-    frequency: "yearly",
-    frequencyNumber: 1,
-    tags: [
-      { id: "5", name: "Travel", color: "purple" }
+    targetPeriod: "yearly",
+    targetCount: 1,
+    tagIds: [
+      "5"
     ],
-    createdAt: "2023-01-04"
+    createdAt: "2023-01-04",
+    startDate: "",
+    streak: 0,
+    updatedAt: ""
   }
 ];
