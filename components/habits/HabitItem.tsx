@@ -1,15 +1,22 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Habit } from "../../lib/types/Habit";
+import TagList from "../tags/TagList";
 
 export default function HabitItem({ habit }: { habit: Habit }) {
+  function formatFrequency(period: string, count: number): string {
+    const uppercasePeriod = period.charAt(0).toUpperCase() + period.slice(1);
+    return `Frequency: ${uppercasePeriod} x${count}`;
+  }
+
   return (
-    <View style={styles.itemContainer}>
-      <Text style={styles.itemName}>{habit.name}</Text>
-      <Text style={styles.itemDescription}>{habit.description}</Text>
-      <Text style={styles.itemFrequency}>Frequency: {habit.targetPeriod}</Text>
-      <Text style={styles.itemCount}>Target Count: {habit.targetCount}</Text>
-      <Text style={styles.itemTags}>Tags: {habit.tagIds?.join(", ")}</Text>
-    </View>
+    <Pressable style={styles.itemContainer} android_ripple={{ color: '#ddd' }}>
+      <View>
+        <Text style={styles.itemName}>{habit.name}</Text>
+        <Text style={styles.itemDescription}>{habit.description}</Text>
+        <Text style={styles.itemFrequency}>{formatFrequency(habit.targetPeriod, habit.targetCount)}</Text>
+        <TagList tags={habit.tagIds} />
+      </View>
+    </Pressable>
   );
 }
 
