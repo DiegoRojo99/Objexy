@@ -1,6 +1,45 @@
-import { Habit } from "../lib/types/Habit";
+import {  HabitLog, HabitWithLogs } from "../lib/types/Habit";
 
-export const sampleHabits: Habit[] = [
+const sampleLogs: HabitLog[] = [
+  {
+    id: "1",
+    date: "2025-07-08",
+    createdAt: "2025-07-08T00:00:00Z",
+    updatedAt: "2025-07-08T00:00:00Z"
+  },
+  {
+    id: "2",
+    date: "2025-07-09",
+    createdAt: "2025-07-09T00:00:00Z",
+    updatedAt: "2025-07-09T00:00:00Z",
+  },
+  {
+    id: "3",
+    date: "2025-07-10",
+    createdAt: "2025-07-10T00:00:00Z",
+    updatedAt: "2025-07-10T00:00:00Z"
+  },
+  {
+    id: "4",
+    date: "2025-07-11",
+    createdAt: "2025-07-11T00:00:00Z",
+    updatedAt: "2025-07-11T00:00:00Z",
+  },
+  {
+    id: "5",
+    date: "2025-07-12",
+    createdAt: "2025-07-12T00:00:00Z",
+    updatedAt: "2025-07-12T00:00:00Z",
+  },
+  {
+    id: "6",
+    date: "2025-07-13",
+    createdAt: "2025-07-13T00:00:00Z",
+    updatedAt: "2025-07-13T00:00:00Z",
+  }
+];
+
+export const sampleHabits: HabitWithLogs[] = [
   {
     id: "1",
     name: "Learn TypeScript",
@@ -13,7 +52,8 @@ export const sampleHabits: Habit[] = [
     createdAt: "2023-01-01",
     startDate: "",
     streak: 0,
-    updatedAt: ""
+    updatedAt: "",
+    logs: sampleLogs
   },
   {
     id: "2",
@@ -27,7 +67,8 @@ export const sampleHabits: Habit[] = [
     createdAt: "2023-01-02",
     startDate: "",
     streak: 0,
-    updatedAt: ""
+    updatedAt: "",
+    logs: sampleLogs
   },
   {
     id: "3",
@@ -41,7 +82,8 @@ export const sampleHabits: Habit[] = [
     createdAt: "2023-01-03",
     startDate: "",
     streak: 0,
-    updatedAt: ""
+    updatedAt: "",
+    logs: sampleLogs
   },
   {
     id: "4",
@@ -55,7 +97,8 @@ export const sampleHabits: Habit[] = [
     createdAt: "2023-01-04",
     startDate: "",
     streak: 0,
-    updatedAt: ""
+    updatedAt: "",
+    logs: sampleLogs
   },
   {
     id: "5",
@@ -69,7 +112,8 @@ export const sampleHabits: Habit[] = [
     createdAt: "2023-01-05",
     startDate: "",
     streak: 0,
-    updatedAt: ""
+    updatedAt: "",
+    logs: sampleLogs
   },
   {
     id: "6",
@@ -83,6 +127,7 @@ export const sampleHabits: Habit[] = [
     createdAt: "2023-01-06",
     startDate: "",
     streak: 0,
-    updatedAt: ""
+    updatedAt: "",
+    logs: sampleLogs
   }
 ];
