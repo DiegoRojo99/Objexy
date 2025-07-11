@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, Button } from "react-native";
-import { sampleHabits } from "../../data/sample";
+import { sampleHabits } from "../data/sample";
 import { useState } from "react";
-import HabitInputModal from "./HabitInputModal";
-import { HabitList } from "./HabitList";
-import { Habit, HabitWithLogs } from "../../lib/types/Habit";
+import HabitInputModal from "../components/habits/HabitInputModal";
+import { HabitList } from "../components/habits/HabitList";
+import { Habit, HabitWithLogs } from "../lib/types/Habit";
 
 export default function HabitScreen() {
   const [modalIsVisible, setModalIsVisible] = useState(false);

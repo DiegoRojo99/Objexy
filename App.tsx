@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
-import HabitScreen from './components/habits/HabitScreen';
+import HabitScreen from './screens/HabitScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import Colors from './lib/colors/Colors';
 import { useFonts } from 'expo-font';
