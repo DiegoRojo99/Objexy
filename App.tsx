@@ -1,11 +1,11 @@
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import HabitScreen from './components/habits/HabitScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <HabitScreen />
-    </View>
+    </SafeAreaView>
   );
 }
 
