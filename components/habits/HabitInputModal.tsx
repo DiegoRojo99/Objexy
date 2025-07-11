@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, TextInput, View, Modal, StyleSheet, Text, Image } from "react-native";
+import { Button, TextInput, View, Modal, StyleSheet, Text, Image, Alert } from "react-native";
 import { Habit, HabitFrequency, HabitInput } from "../../lib/types/Habit";
 import { habitInputIntoHabitDTO } from "../../lib/dto/Habit";
 
@@ -13,14 +13,14 @@ export default function HabitInputModal({ visible, onClose, onAddHabit }: HabitI
   const [habitName, setHabitName] = useState("");
   const [description, setDescription] = useState("");
   const [targetPeriod, setTargetPeriod] = useState<HabitFrequency>("weekly");
-  const [targetCount, setTargetCount] = useState<number>(0);
+  const [targetCount, setTargetCount] = useState<number | null>(null);
   const [tags, setTags] = useState("");
 
   function handleAddHabit() {
     const newHabitInput: HabitInput = {
       name: habitName,
       description: description,
-      targetCount: targetCount,
+      targetCount: targetCount ?? 0,
       targetPeriod: targetPeriod,
       tagIds: tags.split(",").map(tag => tag.trim()),
     };
@@ -28,6 +28,12 @@ export default function HabitInputModal({ visible, onClose, onAddHabit }: HabitI
     const newHabit = habitInputIntoHabitDTO(newHabitInput);
     onAddHabit(newHabit);
     onClose();
+  }
+
+  function targetCountValidation(count: string | null): void {
+    const parsedCount = Number(count);
+    if (isNaN(parsedCount) || parsedCount < 0) return;
+    setTargetCount(parsedCount);
   }
 
   return (
@@ -62,13 +68,12 @@ export default function HabitInputModal({ visible, onClose, onAddHabit }: HabitI
         <TextInput
           placeholder="Target Count"
           style={styles.input}
-          value={String(targetCount)}
-          onChangeText={text => {
-            const value = parseInt(text);
-            if (!isNaN(value)) {
-              setTargetCount(value);
-            }
-          }}
+          value={targetCount ? targetCount.toString() : ""}
+          maxLength={3}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+          onChangeText={targetCountValidation}
         />
         <TextInput
           placeholder="Tags (comma separated)"
