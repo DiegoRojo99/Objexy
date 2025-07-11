@@ -39,6 +39,7 @@ export default function HabitInputModal({ visible, onClose, onAddHabit }: HabitI
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose} >
       <View style={styles.modal}>
+        <Text style={styles.headerText}>Add New Habit</Text>
         <Image
           source={require('../../assets/images/goal.png')}
           style={styles.image}
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
     marginBottom: 16,
     textAlign: 'center',
   },

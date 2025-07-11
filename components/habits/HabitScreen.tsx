@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   habitsTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
     marginTop: 8,
     paddingBottom: 8,
     marginBottom: 16,

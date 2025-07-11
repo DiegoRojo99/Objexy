@@ -4,6 +4,8 @@ import TagList from "../tags/TagList";
 import HabitLogStreak from "./logs/HabitLogStreak";
 import HabitLogModal from "./logs/HabitLogModal";
 import { useState } from "react";
+import { Foundation, MaterialIcons } from "@expo/vector-icons";
+import Colors from "../../lib/colors/Colors";
 
 export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,16 +25,15 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
     <HabitLogModal visible={modalVisible} onClose={() => setModalVisible(false)} onAddHabitLog={handleAddHabitLog} />
     <Pressable style={styles.itemContainer} android_ripple={{ color: '#ddd' }}>
       <View style={styles.topRow}>
-        <Image
-          source={habit.icon ? { uri: habit.icon } : require('../../assets/images/goal.png')}
-          style={{ flex: 0, width: 40, height: 40, borderRadius: 20, marginRight: 8 }}
-        />
+        <Foundation name="target" size={40} color="black" style={{ marginRight: 8 }} />
         <View style={{ flex: 4 }}>
           <Text style={styles.itemName}>{habit.name}</Text>
           <Text style={styles.itemDescription}>{habit.description}</Text>
         </View>
-        <View style={{ flex: 0, width: 40, height: 40, alignItems: 'center' }}>
-          <Button title="+" onPress={() => { setModalVisible(true); }} />
+        <View style={styles.addButton}>
+          <Pressable onPress={() => setModalVisible(true)}>
+            <MaterialIcons name="add-task" size={24} color="white" />
+          </Pressable>
         </View>
       </View>
       <View>
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     width: '100%',
     padding: 8,
+    backgroundColor: Colors.background,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 4,
@@ -59,8 +61,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  addButton: {
+    padding: 8,
+    backgroundColor: Colors.primary,
+    borderRadius: 8,
+  },
   itemName: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
     fontSize: 12,
     textAlign: 'left',
   },

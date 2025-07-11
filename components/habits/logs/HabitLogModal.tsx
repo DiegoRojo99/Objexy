@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
     marginBottom: 16,
     textAlign: 'center',
   },

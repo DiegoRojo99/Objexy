@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
   },
   streakCount: {
