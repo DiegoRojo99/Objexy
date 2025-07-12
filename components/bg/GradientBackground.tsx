@@ -4,7 +4,7 @@ import React from 'react';
 
 export const GradientBackground: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
   <LinearGradient
-    colors={['#0C3026', '#155854']}
+    colors={['#155854', '#0C3026']}
     style={styles.gradient}
   >
     {children}

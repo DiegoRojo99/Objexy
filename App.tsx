@@ -21,12 +21,10 @@ export default function App() {
 
   const TabScreenOptions = {
     headerShown: false,
-    tabBarActiveTintColor: Colors.secondary,
+    tabBarActiveTintColor: Colors.active,
     tabBarInactiveTintColor: Colors.inactive,
     tabBarStyle: {
       backgroundColor: Colors.tabBackground,
-      borderTopWidth: 1,
-      elevation: 0,
       marginBottom: 0,
     },
   };
