@@ -2,17 +2,10 @@ import { View, Text, StyleSheet } from "react-native";
 import { sampleHabits } from "../data/sample";
 import TagList from "../components/tags/TagList";
 import HabitLogStreak from "../components/habits/logs/HabitLogStreak";
-import { useEffect } from "react";
 
 export default function HabitDetailsScreen({ route, navigation }: { route: any, navigation: any }) {
   const { habitId } = route.params;
   const habit = sampleHabits.find(h => h.id === habitId);
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerTitle: habit ? habit.name : 'Habit Details',
-    });
-  }, [habit, navigation]);
 
   return (
     <View style={styles.habitsContainer}>
@@ -32,7 +25,6 @@ const styles = StyleSheet.create({
   habitsContainer: {
     flex: 1,
     padding: 8,
-    backgroundColor: '#fff',
   },
   habitsTitle: {
     fontSize: 24,

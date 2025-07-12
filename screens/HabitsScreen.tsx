@@ -22,20 +22,9 @@ export default function HabitsScreen({  }) {
     </View>
   );
 }
-
+  
 const styles = StyleSheet.create({
   habitsContainer: {
     flex: 1,
-    padding: 8,
-    backgroundColor: '#fff',
-  },
-  habitsTitle: {
-    fontSize: 24,
-    fontFamily: 'Roboto-Bold',
-    marginTop: 8,
-    paddingBottom: 8,
-    marginBottom: 16,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
   },
 });
