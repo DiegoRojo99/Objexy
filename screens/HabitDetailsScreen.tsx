@@ -11,13 +11,22 @@ export default function HabitDetailsScreen({ route, navigation }: { route: any, 
   return (
     <GradientBackground>
       <View style={styles.habitsContainer}>
+        {/* Habit Title */}
         <Text style={styles.habitsTitle}>{habit?.name}</Text>
+
+        {/* Habit Details */}
         <View style={styles.section}>
           <Text style={styles.description}>{habit?.description}</Text>
-          <TagList tags={habit?.tagIds || []} />
         </View>
+
+        {/* Habit Logs */}
         <View style={styles.section}>
           <HabitLogStreak logs={habit?.logs || []} />
+        </View>
+
+        {/* Habit Tags */}
+        <View style={styles.section}>
+          <TagList tags={habit?.tagIds || []} />
         </View>
       </View>
     </GradientBackground>

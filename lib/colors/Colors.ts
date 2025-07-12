@@ -1,13 +1,13 @@
 const Colors = {
   primary: '#0C3026',
   secondary: '#155854',
-  accent: '#61ffa8ff',
+  accent: '#19a478ff',
   active: 'white',
-  inactive: '#888888',
+  inactive: '#aaaaaa',
   text: '#fff',
   tabBackground: '#155845',
-  cardBackground: '#ffffff',  
-  ripple: '#ddd',
+  cardBackground: '#d9d9d9',  
+  ripple: '#64b9a1ff',
 };
 
 export default Colors;
