@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 import { HabitLog } from "../../../lib/types/Habit";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function HabitLogStreak({ logs }: { logs: HabitLog[] }) {
   function checkPreviousDay(date1: string, date2: string): boolean {
@@ -38,8 +39,11 @@ export default function HabitLogStreak({ logs }: { logs: HabitLog[] }) {
   const streak = calculateStreak(logs);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Current Streak</Text>
-      <Text style={styles.streakCount}>{streak} days</Text>
+      <FontAwesome5 name="fire-alt" size={32} color="black" />
+      <View style={{ marginLeft: 12 }}>
+        <Text style={styles.title}>Current Streak</Text>
+        <Text style={styles.streakCount}>{streak} days</Text>
+      </View>
     </View>
   );
 }
@@ -50,6 +54,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#f9f9f9',
     marginVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
     fontFamily: 'Roboto-Bold',
