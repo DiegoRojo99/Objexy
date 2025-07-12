@@ -25,7 +25,7 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
   }
 
   function handlePress() {
-    navigation.navigate('Habit Details', { habitId: habit.id });
+    navigation.navigate('HabitDetails', { habitId: habit.id });
   }
 
   return (
