@@ -7,6 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { GradientBackground } from './components/bg/GradientBackground';
+import Colors from './lib/colors/Colors';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -19,10 +21,10 @@ export default function App() {
 
   const TabScreenOptions = {
     headerShown: false,
-    tabBarActiveTintColor: '#6200ee',
-    tabBarInactiveTintColor: '#999',
+    tabBarActiveTintColor: Colors.secondary,
+    tabBarInactiveTintColor: Colors.inactive,
     tabBarStyle: {
-      backgroundColor: '#fff',
+      backgroundColor: Colors.tabBackground,
       borderTopWidth: 1,
       elevation: 0,
       marginBottom: 0,
@@ -31,18 +33,15 @@ export default function App() {
 
   const commonScreenOptions = {
     headerShown: false,
-    contentStyle: {
-      paddingTop: 32,
-      paddingHorizontal: 8,
-      flex: 1,
-    },
   };
 
   function HomeScreen() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home Screen</Text>
-      </View>
+      <GradientBackground>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ color: Colors.text }}>Home Screen</Text>
+        </View>
+      </GradientBackground>
     )
   }
 

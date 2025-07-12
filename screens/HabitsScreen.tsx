@@ -4,6 +4,7 @@ import { useState } from "react";
 import HabitInputModal from "../components/habits/HabitInputModal";
 import { HabitList } from "../components/habits/HabitList";
 import { Habit, HabitWithLogs } from "../lib/types/Habit";
+import { GradientBackground } from "../components/bg/GradientBackground";
 
 export default function HabitsScreen({  }) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -15,11 +16,13 @@ export default function HabitsScreen({  }) {
   }
 
   return (
-    <View style={styles.habitsContainer}>
-      <HabitInputModal visible={modalIsVisible} onClose={() => setModalIsVisible(false)} onAddHabit={handleAddHabit} />
-      <Button title="Create new habit" onPress={() => setModalIsVisible(true)} />
-      <HabitList habits={habits} />
-    </View>
+    <GradientBackground>
+      <View style={styles.habitsContainer}>
+        <HabitInputModal visible={modalIsVisible} onClose={() => setModalIsVisible(false)} onAddHabit={handleAddHabit} />
+        <Button title="Create new habit" onPress={() => setModalIsVisible(true)} />
+        <HabitList habits={habits} />
+      </View>
+    </GradientBackground>
   );
 }
   
