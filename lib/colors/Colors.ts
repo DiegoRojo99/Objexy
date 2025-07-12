@@ -1,10 +1,11 @@
 const Colors = {
-  primary: '#5fb4ffff',
-  secondary: '#ffffffff',
-  background: '#ffffff',
-  text: '#333333',
-  navigation: '#61c0ffff',
-  navigationText: '#ffffff',
+  primary: '#0C3026',
+  secondary: '#155854',
+  accent: '#61ffa8ff',
+  inactive: '#888888',
+  text: '#fff',
+  tabBackground: '#f8f8f8',
+  cardBackground: '#ffffff',  
 };
 
 export default Colors;
