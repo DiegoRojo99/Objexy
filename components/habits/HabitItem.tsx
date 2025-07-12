@@ -31,7 +31,7 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
   return (
     <>
     <HabitLogModal visible={modalVisible} onClose={() => setModalVisible(false)} onAddHabitLog={handleAddHabitLog} />
-    <Pressable style={styles.itemContainer} android_ripple={{ color: '#ddd' }} onPress={handlePress}>
+    <Pressable style={styles.itemContainer} android_ripple={{ color: Colors.ripple }} onPress={handlePress}>
       <View style={styles.topRow}>
         <Foundation name="target" size={40} color="black" style={{ marginRight: 8 }} />
         <View style={{ flex: 4 }}>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     width: '100%',
     padding: 12,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.cardBackground,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     padding: 8,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.secondary,
     borderRadius: 8,
   },
   itemName: {
