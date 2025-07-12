@@ -11,7 +11,6 @@ import Colors from "../../lib/colors/Colors";
 import { RootStackParamList } from "../../lib/types/Params";
 
 export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
-  const [modalVisible, setModalVisible] = useState(false);
   const [habitLogs, setHabitLogs] = useState(habit.logs);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -20,7 +19,14 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
     return `Frequency: ${uppercasePeriod} x${count}`;
   }
 
-  function handleAddHabitLog(habitLog: HabitLog) {
+  function handleAddHabitLog() {
+    const now = new Date().toISOString();
+    const habitLog: HabitLog = {
+      id: Math.random().toString(36).substring(2, 15),
+      date: now.split('T')[0],
+      createdAt: now,
+      updatedAt: now,
+    };
     setHabitLogs(prevLogs => [ ...prevLogs, habitLog ]);
   }
 
@@ -29,35 +35,46 @@ export default function HabitItem({ habit }: { habit: HabitWithLogs }) {
   }
 
   return (
-    <>
-    <HabitLogModal visible={modalVisible} onClose={() => setModalVisible(false)} onAddHabitLog={handleAddHabitLog} />
     <Pressable style={styles.itemContainer} android_ripple={{ color: Colors.ripple }} onPress={handlePress}>
+      {/* Top Row */}
       <View style={styles.topRow}>
-        <Foundation name="target" size={40} color="black" style={{ marginRight: 8 }} />
-        <View style={{ flex: 4 }}>
-          <Text style={styles.itemName}>{habit.name}</Text>
-          <Text style={styles.itemDescription}>{habit.description}</Text>
+        {/* Icon */}
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Foundation name="target" size={40} color="black" />
         </View>
-        <View style={styles.addButton}>
-          <Pressable onPress={() => setModalVisible(true)}>
+        
+        {/* Habit Name and Description */}
+        <View style={{ flex: 8, paddingHorizontal: 8 }}>
+          <Text style={styles.itemName}>{habit.name}</Text>
+          <Text style={styles.itemDescription}>
+            {habit.description?.substring(0, 35)}
+            {habit.description && habit.description.length > 35 && '...'}
+          </Text>
+        </View>
+
+        {/* Add Button */}
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Pressable style={styles.addButton} onPress={() => handleAddHabitLog()}>
             <MaterialIcons name="add-task" size={24} color="white" />
           </Pressable>
         </View>
       </View>
+
+      {/* Streak */}      
+      <HabitLogStreak logs={habitLogs} />
+
+      {/* Tags */}
       <View>
-        <Text style={styles.itemFrequency}>{formatFrequency(habit.targetPeriod, habit.targetCount)}</Text>
         <TagList tags={habit.tagIds} />
       </View>
-      <HabitLogStreak logs={habitLogs} />
     </Pressable>
-    </>
   );
 }
 
 const styles = StyleSheet.create({
   itemContainer: {
     width: '100%',
-    padding: 12,
+    padding: 8,
     backgroundColor: Colors.cardBackground,
     borderWidth: 1,
     borderColor: '#ccc',
@@ -66,20 +83,23 @@ const styles = StyleSheet.create({
     elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
+    display: 'flex',
+    flexDirection: 'column',
   },
   topRow: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    paddingVertical: 4,
   },
   addButton: {
-    padding: 8,
-    backgroundColor: Colors.secondary,
+    padding: 4,
+    backgroundColor: Colors.accent,
     borderRadius: 8,
   },
   itemName: {
     fontFamily: 'Roboto-Bold',
-    fontSize: 12,
+    fontSize: 16,
     textAlign: 'left',
   },
   itemDescription: {
