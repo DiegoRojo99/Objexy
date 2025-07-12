@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
+import Colors from "../../lib/colors/Colors";
 
 export default function TagList({ tags }: { tags: string[] | undefined }) {
   return (
@@ -22,13 +23,14 @@ const styles = StyleSheet.create({
   tagListContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginVertical: 8,
+    marginVertical: 4,
   },
   tagItem: {
-    backgroundColor: "#eee",
-    borderRadius: 12,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
+    backgroundColor: Colors.accent,
+    color: Colors.text,
+    borderRadius: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     margin: 4,
   },
 });
